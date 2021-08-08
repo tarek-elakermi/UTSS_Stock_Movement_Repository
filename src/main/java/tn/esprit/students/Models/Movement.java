@@ -28,7 +28,7 @@ import lombok.NonNull;
 public class Movement implements Serializable {
 
 	/**
-	 * 
+	
 	 */
 	private static final long serialVersionUID = 1L;
 	
