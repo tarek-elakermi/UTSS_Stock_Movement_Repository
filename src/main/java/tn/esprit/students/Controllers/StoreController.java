@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.students.Models.SequenceGeneretorService;
 import tn.esprit.students.Models.Stock;
 import tn.esprit.students.Models.Store;
+import tn.esprit.students.Models.User;
 import tn.esprit.students.Services.StoreServiceImpl;
 
 @RestController
@@ -21,6 +23,9 @@ public class StoreController {
 	
 	@Autowired
 	private StoreServiceImpl serviceStore;
+	
+	@Autowired
+	private SequenceGeneretorService service;
 	
 	@GetMapping("/AllStores")
 	public List<Store> getAllStores(){
@@ -40,6 +45,7 @@ public class StoreController {
 	
 	@PostMapping(value = "/addStore")
 	public Store addStore(@RequestBody Store store) {
+		store.setIdStore(String.valueOf(service.getSequenceNumber(User.SEQUENCE_NAME)));
 		serviceStore.addStore(store);
 		return store;
 		

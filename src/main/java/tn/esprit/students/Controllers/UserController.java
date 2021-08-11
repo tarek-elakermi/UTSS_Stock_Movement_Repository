@@ -12,14 +12,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.students.Models.SequenceGeneretorService;
 import tn.esprit.students.Models.User;
 import tn.esprit.students.Services.UserServiceImpl;
+
 
 @RestController
 public class UserController {
 	
 	@Autowired
 	private UserServiceImpl serviceUser;
+	
+	@Autowired
+	private SequenceGeneretorService service;
 	
 	@GetMapping("/AllUsers")
 	public List<User> getAllUsers(){
@@ -37,6 +42,7 @@ public class UserController {
 	
 	@PostMapping(value = "/addUser")
 	public User addUser(@RequestBody User user) {
+		user.setIdUser(String.valueOf(service.getSequenceNumber(User.SEQUENCE_NAME)));
 		serviceUser.addUser(user);
 		return user;
 		

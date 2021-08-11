@@ -1,5 +1,6 @@
 package tn.esprit.students.Services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.students.Models.Category;
 import tn.esprit.students.Models.CategoryRepository;
+import tn.esprit.students.Models.Product;
+import tn.esprit.students.Models.ProductRepository;
 
 
 @Service
@@ -50,5 +53,7 @@ public class CategoryServiceImpl implements CategoryService {
 		categoryRepository.deleteById(idCategory);
 		
 	}
+
+	
 
 }

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.students.Models.SequenceGeneretorService;
 import tn.esprit.students.Models.Stock;
+import tn.esprit.students.Models.User;
 import tn.esprit.students.Services.StockServiceImpl;
 
 @RestController
@@ -20,6 +22,9 @@ public class StockController {
 	
 	@Autowired
 	private StockServiceImpl serviceStock;
+	
+	@Autowired
+	private SequenceGeneretorService service;
 	
 	@GetMapping("/AllStocks")
 	public List<Stock> getAllStocks(){
@@ -37,6 +42,7 @@ public class StockController {
 	
 	@PostMapping(value = "/addStock")
 	public Stock addStock(@RequestBody Stock stock) {
+		stock.setIdStock(String.valueOf(service.getSequenceNumber(User.SEQUENCE_NAME)));
 		serviceStock.addStock(stock);
 		return stock;
 		

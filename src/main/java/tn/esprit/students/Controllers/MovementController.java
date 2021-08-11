@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.students.Models.Category;
 import tn.esprit.students.Models.Movement;
+import tn.esprit.students.Models.SequenceGeneretorService;
+import tn.esprit.students.Models.User;
 import tn.esprit.students.Services.MovementServiceImpl;
 
 @RestController
@@ -21,6 +23,9 @@ public class MovementController {
 	
 	@Autowired
 	private MovementServiceImpl serviceMovement;
+	
+	@Autowired
+	private SequenceGeneretorService service;
 	
 	@GetMapping("/AllMovements")
 	public List<Movement> getAllMovements(){
@@ -38,6 +43,7 @@ public class MovementController {
 	
 	@PostMapping(value = "/addMovement")
 	public Movement addMovement(@RequestBody Movement movement) {
+		movement.setIdMovement(String.valueOf(service.getSequenceNumber(User.SEQUENCE_NAME)));
 		serviceMovement.addMovement(movement);
 		return movement;
 		

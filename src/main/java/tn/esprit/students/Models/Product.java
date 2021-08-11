@@ -1,6 +1,7 @@
 package tn.esprit.students.Models;
 
 import java.io.Serializable;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -8,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 @Document(collection = "T_Products")
 public class Product implements Serializable {
@@ -30,6 +32,9 @@ public class Product implements Serializable {
 	private int maxQuantityProduct ;
 	private String imageProd ;
 	
+	
+
+
 	private UnderCategory underCategory;
 	
 	private Stock stock;
@@ -58,7 +63,6 @@ public class Product implements Serializable {
 		this.productMovement = productMovement;
 	}
 
-
 	public UnderCategory getUnderCategory() {
 		return underCategory;
 	}
@@ -71,7 +75,7 @@ public class Product implements Serializable {
 
 	public Product() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 

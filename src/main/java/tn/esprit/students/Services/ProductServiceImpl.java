@@ -1,5 +1,6 @@
 package tn.esprit.students.Services;
 
+
 import java.util.List;
 
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.students.Models.Product;
 import tn.esprit.students.Models.ProductRepository;
+import tn.esprit.students.Models.UnderCategory;
 import tn.esprit.students.Models.UnderCategoryRepository;
 
 
@@ -55,6 +57,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void deleteProduct(String idProduct) {
 		productRepository.deleteById(idProduct);		
+	}
+
+	@Override
+	public void affectUnderCtegorytToProduct(String idProduct, String idUnderCategory) {
+		Product product = productRepository.findById(idProduct).get();
+		UnderCategory underCategory = underCategoryRepository.findById(idUnderCategory).get();
+		product.setUnderCategory(underCategory);
+		productRepository.save(product);
+		
+		
 	}
 
 	

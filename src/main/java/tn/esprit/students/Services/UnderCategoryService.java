@@ -12,5 +12,7 @@ public interface UnderCategoryService{
 	UnderCategory retrieveUnderCategory(String idUnderCategory);
 	void deleteUnderCategory(String idUnderCategory);
 	
+	void affectProductToUnderCtegoryt(String idUnderCategory, String idProduct);
+	
 
 }

@@ -8,6 +8,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -24,16 +29,16 @@ public class UnderCategory implements Serializable {
 	
 	@Id
 	private String idUnderCategory ;
-	@Indexed
+	
 	private String nameUnderCategory ;
 	
 	private Category category;
 	
+	@JsonIgnoreProperties
 	private List<Product> underProducts;
 	
 	
 	
-
 	public List<Product> getUnderProducts() {
 		return underProducts;
 	}

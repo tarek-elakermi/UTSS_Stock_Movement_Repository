@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.students.Models.Category;
+import tn.esprit.students.Models.SequenceGeneretorService;
+import tn.esprit.students.Models.User;
 import tn.esprit.students.Services.CategoryServiceImpl;
 
 @RestController
@@ -20,6 +22,9 @@ public class CategoryController {
 	
 	@Autowired
 	CategoryServiceImpl serviceCategory;
+	
+	@Autowired
+	private SequenceGeneretorService service;
 	
 	
 	@GetMapping("/AllCategories")
@@ -40,6 +45,7 @@ public class CategoryController {
 	
 	@PostMapping(value = "/addCategory")
 	public Category addCategory(@RequestBody Category category) {
+		category.setIdCategory(String.valueOf(service.getSequenceNumber(User.SEQUENCE_NAME)));
 		serviceCategory.addCategory(category);
 		return category;
 		

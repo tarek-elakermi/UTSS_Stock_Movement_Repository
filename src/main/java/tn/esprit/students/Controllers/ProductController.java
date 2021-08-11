@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import tn.esprit.students.Models.Product;
+import tn.esprit.students.Models.SequenceGeneretorService;
+import tn.esprit.students.Models.User;
 import tn.esprit.students.Services.ProductServiceImpl;
 
 @RestController
@@ -21,6 +23,9 @@ public class ProductController {
 	
 	@Autowired
 	private ProductServiceImpl serviceProduct;
+	
+	@Autowired
+	private SequenceGeneretorService service;
 	
 	
 	@GetMapping("/AllProducts")
@@ -39,6 +44,7 @@ public class ProductController {
 	
 	@PostMapping(value = "/addProduct")
 	public Product addProduct(@RequestBody Product product) {
+		product.setIdProduct(String.valueOf(service.getSequenceNumber(User.SEQUENCE_NAME)));
 		serviceProduct.addProduct(product);
 		return product;
 		
@@ -55,6 +61,12 @@ public class ProductController {
 		serviceProduct.deleteProduct(idProduct);
 	}
 	
+	
+	@PostMapping(value = "/affectUnderCategoryToProduct/{idProduct}/{idUnderCategory}")
+	public void AffectProductToUnderCategory(@PathVariable("idProduct") String idProduct ,
+			@PathVariable("idUnderCategory") String idUnderCategory) {
+		serviceProduct.affectUnderCtegorytToProduct(idProduct, idUnderCategory);
+	}
 	
 	
 	

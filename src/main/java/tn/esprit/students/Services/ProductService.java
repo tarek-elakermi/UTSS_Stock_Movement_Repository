@@ -12,5 +12,7 @@ public interface ProductService {
 	Product retrieveProduct(String idProduct);
 	void deleteProduct(String idProduct);
 	
+	void affectUnderCtegorytToProduct( String idProduct,String idUnderCategory);
+	
 
 }

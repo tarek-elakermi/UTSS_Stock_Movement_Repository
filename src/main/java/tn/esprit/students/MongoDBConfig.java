@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 import tn.esprit.students.Models.Category;
 import tn.esprit.students.Models.CategoryRepository;
+import tn.esprit.students.Models.DbSequence;
 import tn.esprit.students.Models.Localisation;
 import tn.esprit.students.Models.Movement;
 import tn.esprit.students.Models.MovementRepository;
@@ -48,13 +49,14 @@ public class MongoDBConfig {
 	@Bean
 	CommandLineRunner commandLineRunner(UserRepository userRepository) {
 		return strings -> {
-			userRepository.save(new User("1", "tarek", "elakermi"));
-			categoryRepository.save(new Category("1", "boissons"));
+			//userRepository.save(new User("tarek", "elakermi"));
+			//categoryRepository.save(new Category("1", "boissons"));
 			movmentRepository.save(new Movement("1", new Date(), TypeMov.DESTRACTION));
 			produRepository.save(new Product("1","gazouza", "hjag", 10, 12, 12, 10, 12, "hakgf"));
 			stockRepository.save(new Stock("1", "stock bizerte", TypeStock.Normal_Stock, new Date(), new Date(), new Date(), 12, 12, 12, 12));
 			storeRepository.save(new Store("1", "string","ariana"));
 			underCategoryRepository.save(new UnderCategory("1", "7lib"));
+			
 
 			
 		

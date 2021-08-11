@@ -2,27 +2,37 @@ package tn.esprit.students.Models;
 
 import java.io.Serializable;
 
+
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
+@Data
 @Document
+
+@AllArgsConstructor
 public class User implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Transient
+	public static final String SEQUENCE_NAME="user_sequence";
 	
 	
 	@Id
@@ -122,8 +132,8 @@ public class User implements Serializable {
 		return idUser;
 	}
 
-	public void setIdUser(String idUser) {
-		this.idUser = idUser;
+	public void setIdUser(String i) {
+		this.idUser = i;
 	}
 
 	public String getLastnameUser() {
