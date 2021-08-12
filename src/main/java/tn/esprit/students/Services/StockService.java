@@ -11,5 +11,6 @@ public interface StockService {
 	Stock updateStock(Stock s);
 	Stock retrieveStock(String idStock);
 	void deleteStock(String idStock);
+	void allocateProductToStock(String idStock, String idProduct);
 
 }
