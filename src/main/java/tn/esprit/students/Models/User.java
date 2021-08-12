@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Document
 
-@AllArgsConstructor
+
 public class User implements Serializable {
 
 	/**
@@ -37,10 +37,9 @@ public class User implements Serializable {
 	
 	@Id
 	protected String idUser ;
-	@Indexed
 	protected String lastnameUser ;
-	@Indexed
 	protected String firstnameUser ;
+	private String userName;
 	protected  long CinUser ;
 	@CreatedDate
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -77,6 +76,53 @@ public class User implements Serializable {
 	}
 	
 	
+	
+	
+
+	
+
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+
+	public User(String userName, String passwordUser) {
+		super();
+		this.userName = userName;
+		this.passwordUser = passwordUser;
+	}
+
+
+
+	public User(String idUser, String lastnameUser, String firstnameUser, String userName, long cinUser,
+			Date birthDateUser, String passwordUser, String confirmpasswordUser, String phoneNumberUser,
+			boolean stateUser, String emailUser, Role role, List<Movement> userMovement) {
+		super();
+		this.idUser = idUser;
+		this.lastnameUser = lastnameUser;
+		this.firstnameUser = firstnameUser;
+		this.userName = userName;
+		CinUser = cinUser;
+		this.birthDateUser = birthDateUser;
+		this.passwordUser = passwordUser;
+		this.confirmpasswordUser = confirmpasswordUser;
+		this.phoneNumberUser = phoneNumberUser;
+		this.stateUser = stateUser;
+		this.emailUser = emailUser;
+		this.role = role;
+		this.userMovement = userMovement;
+	}
+
+
 
 	public User(String idUser, String lastnameUser, String firstnameUser) {
 		super();
@@ -84,6 +130,8 @@ public class User implements Serializable {
 		this.lastnameUser = lastnameUser;
 		this.firstnameUser = firstnameUser;
 	}
+	
+	
 
 
 

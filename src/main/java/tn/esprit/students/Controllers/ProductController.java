@@ -27,6 +27,8 @@ public class ProductController {
 	@Autowired
 	private SequenceGeneretorService service;
 	
+	// url : http://localhost:6038/
+	
 	
 	@GetMapping("/AllProducts")
 	public List<Product> getAllProducts(){
