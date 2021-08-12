@@ -53,5 +53,23 @@ public class StockController {
 		serviceStock.deleteStock(idStock);
 	}
 	
+	
+	
+	
+	// http://localhost:6038/allocateProductToStock/{ids}/{idp}
+				@PutMapping("/allocateProductToStock/{idstock}/{idproduct}")
+				public void allocateProductToStock(@PathVariable(value = "idstock") String idStock ,@PathVariable(value = "idproduct") String idProduct){
+								
+					serviceStock.allocateProductToStock(idStock, idProduct);
+				
+				
+				}
+				
+	
+	
+	
+	
+	
+	
 
 }
