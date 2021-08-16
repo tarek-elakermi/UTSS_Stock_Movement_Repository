@@ -67,6 +67,13 @@ public class UnderCategoryController {
 	}
 	
 	
+	//get UnderCatByName
+	@GetMapping(value = "/getUnderCatByName/{nameUnderCategory}")
+	public UnderCategory getUnderCategoryBYNAME(@PathVariable("nameUnderCategory") String nameUnderCategory) {
+		return serviceUnderCategory.getUnderCategoryByName(nameUnderCategory);
+	}
+	
+	
 	
 	
 	
