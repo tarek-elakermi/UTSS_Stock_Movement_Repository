@@ -11,6 +11,7 @@ public interface CategoryService {
 	Category updateCategory(Category c);
 	Category retrieveCategory(String idCategory);
 	void deleteCategory(String idCategory);
+	void affectUnderCategoryToCategory(String idCategory, String idUnderCategory);
 	
 	
 

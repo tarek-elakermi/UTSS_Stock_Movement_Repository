@@ -12,5 +12,6 @@ public interface ProductService {
 	Product retrieveProduct(String idProduct);
 	void deleteProduct(String idProduct);
 	
+	
 
 }

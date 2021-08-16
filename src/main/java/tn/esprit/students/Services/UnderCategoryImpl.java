@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.students.Models.Product;
 import tn.esprit.students.Models.ProductRepository;
 import tn.esprit.students.Models.UnderCategory;
 import tn.esprit.students.Models.UnderCategoryRepository;
@@ -19,7 +20,7 @@ public class UnderCategoryImpl implements UnderCategoryService {
 	private UnderCategoryRepository underCategoryRepository;
 	
 	@Autowired
-	private ProductRepository productRepository;
+	ProductRepository productRepository;
 	
 	private static final Logger L = LogManager.getLogger(UnderCategoryImpl.class);
 
@@ -56,6 +57,17 @@ public class UnderCategoryImpl implements UnderCategoryService {
 		
 	}
 
+	
+	
+	@Override
+	public void assignProductToUnderCategory(String idUnderCategory, String idProduct) {
+		UnderCategory undercategory=underCategoryRepository.findById(idUnderCategory).get();
+		Product product=productRepository.findById(idProduct).get();
+		
+		product.setUnderCategory(undercategory);
+		productRepository.save(product);
+	}
+	
 	
 
 }
