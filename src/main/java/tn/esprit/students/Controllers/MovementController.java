@@ -27,6 +27,7 @@ public class MovementController {
 		List<Movement> list = serviceMovement.retrieveAllMovement();
 		return list;
 	}
+	//
 	
 	@GetMapping("/OneMovement/{idMovement}")
 	@ResponseBody
