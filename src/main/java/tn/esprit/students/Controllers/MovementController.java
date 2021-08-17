@@ -27,7 +27,7 @@ public class MovementController {
 		List<Movement> list = serviceMovement.retrieveAllMovement();
 		return list;
 	}
-	//
+	//gitbash
 	
 	@GetMapping("/OneMovement/{idMovement}")
 	@ResponseBody
