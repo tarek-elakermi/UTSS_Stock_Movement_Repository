@@ -70,6 +70,11 @@ public class ProductController {
 		serviceProduct.affectUnderCtegorytToProduct(idProduct, idUnderCategory);
 	}
 	
+	@PutMapping(value = "/affectProductToMovement/{idProduct}/{idMovement}")
+	public void AffectProductToMovement(@PathVariable("idProduct") String idProduct , @PathVariable("idMovement") String idMovement) {
+		serviceProduct.affectProductToMovement(idProduct, idMovement);
+	}
+	
 	
 	
 	

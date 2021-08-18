@@ -2,6 +2,7 @@ package tn.esprit.students;
 
 import java.util.Date;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -51,11 +52,11 @@ public class MongoDBConfig {
 		return strings -> {
 			//userRepository.save(new User("tarek", "elakermi"));
 			//categoryRepository.save(new Category("1", "boissons"));
-			movmentRepository.save(new Movement("1", new Date(), TypeMov.DESTRACTION));
+			/*movmentRepository.save(new Movement("1", new Date(), TypeMov.DESTRACTION));
 			produRepository.save(new Product("1","gazouza", "hjag", 10, 12, 12, 10, 12, "hakgf"));
 			stockRepository.save(new Stock("1", "stock bizerte", TypeStock.Normal_Stock, new Date(), new Date(), new Date(), 12, 12, 12, 12));
 			storeRepository.save(new Store("1", "string","ariana"));
-			underCategoryRepository.save(new UnderCategory("1", "7lib"));
+			underCategoryRepository.save(new UnderCategory("1", "7lib"));*/
 			
 
 			

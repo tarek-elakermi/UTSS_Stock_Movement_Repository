@@ -45,18 +45,22 @@ public class Movement implements Serializable {
 	
 	private List<Product> MovementProducts;
 	
-	private User userMovement;
+	private User userMovements;
 	
 	
 	
-	public User getUserMovement() {
-		return userMovement;
+	
+
+
+
+	public User getUserMovements() {
+		return userMovements;
 	}
 
 
 
-	public void setUserMovement(User userMovement) {
-		this.userMovement = userMovement;
+	public void setUserMovements(User userMovements) {
+		this.userMovements = userMovements;
 	}
 
 

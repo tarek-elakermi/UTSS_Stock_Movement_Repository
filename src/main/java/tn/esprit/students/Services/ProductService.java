@@ -14,5 +14,7 @@ public interface ProductService {
 	
 	void affectUnderCtegorytToProduct( String idProduct,String idUnderCategory);
 	
+	void affectProductToMovement(String idProduct , String idMovement);
+	
 
 }

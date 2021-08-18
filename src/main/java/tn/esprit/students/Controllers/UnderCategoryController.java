@@ -1,5 +1,7 @@
 package tn.esprit.students.Controllers;
 
+
+
 import java.util.List;
 
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.students.Models.SequenceGeneretorService;
 import tn.esprit.students.Models.UnderCategory;
+import tn.esprit.students.Models.UnderCategoryRepository;
 import tn.esprit.students.Models.User;
 import tn.esprit.students.Services.UnderCategoryImpl;
 
@@ -23,6 +26,9 @@ public class UnderCategoryController {
 	
 	@Autowired
 	private UnderCategoryImpl serviceUnderCategory;
+	
+	@Autowired
+	private UnderCategoryRepository underCategoryRepository;
 	
 	@Autowired
 	private SequenceGeneretorService service;
@@ -62,8 +68,9 @@ public class UnderCategoryController {
 	
 	@PutMapping(value = "/affectProductToUnderCategory/{idUnderCategory}/{idProduct}")
 	public void AffectProductToUnderCategory(@PathVariable("idUnderCategory") String idUnderCategory ,
-			@PathVariable("idProduct") String idProduct) {
+			@PathVariable("idProduct") String idProduct) throws Exception {
 		serviceUnderCategory.affectProductToUnderCtegoryt(idUnderCategory, idProduct);
+		
 	}
 	
 	
@@ -72,6 +79,14 @@ public class UnderCategoryController {
 	public UnderCategory getUnderCategoryBYNAME(@PathVariable("nameUnderCategory") String nameUnderCategory) {
 		return serviceUnderCategory.getUnderCategoryByName(nameUnderCategory);
 	}
+	
+	@GetMapping(value = "/getNombreProduct/{nameUnderCategory}")
+	public int getNombreProductByNameUnderCat(@PathVariable("nameUnderCategory")String nameUnderCategory) {
+		return serviceUnderCategory.countProduct(nameUnderCategory);
+		
+	}
+	
+	
 	
 	
 	

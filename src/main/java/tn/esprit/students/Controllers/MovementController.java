@@ -2,6 +2,7 @@ package tn.esprit.students.Controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.esprit.students.Models.Category;
 import tn.esprit.students.Models.Movement;
+import tn.esprit.students.Models.Product;
 import tn.esprit.students.Models.SequenceGeneretorService;
 import tn.esprit.students.Models.User;
 import tn.esprit.students.Services.MovementServiceImpl;
@@ -60,8 +61,21 @@ public class MovementController {
 		serviceMovement.deleteMovement(idMovement);
 	}
 	
+
+	@PutMapping(value = "/affectMovementToUser/{idMovement}/{idUser}")
+	public void AffectMovementToUser(@PathVariable("idMovement")String idMovement , @PathVariable("idUser") String idUser) {
+		 serviceMovement.affectMovementToUser(idMovement, idUser);
+	}
 	
+	@PutMapping(value = "/affectMovementToProduct/{idMovement}/{idProduct}")
+	public void affectMovementToProduct(@PathVariable("idMovement")String idMovement , @PathVariable("idProduct") String idProduct) {
+		serviceMovement.affectMovementToProduct(idMovement, idProduct);
+	}
 	
+	/*@GetMapping(value = "/getProductByMovementUser/{userName}")
+	public List<Product> getProductByMovement(@PathVariable("userName") String userName){
+		return serviceMovement.getProductByMovementinUser(userName);
+	}*/
 	
 	
 	

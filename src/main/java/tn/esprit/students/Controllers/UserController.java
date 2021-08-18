@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.students.Models.Movement;
+import tn.esprit.students.Models.MovementRepository;
 import tn.esprit.students.Models.SequenceGeneretorService;
 import tn.esprit.students.Models.User;
+import tn.esprit.students.Services.MovementServiceImpl;
 import tn.esprit.students.Services.UserServiceImpl;
 
 
@@ -22,6 +25,12 @@ public class UserController {
 	
 	@Autowired
 	private UserServiceImpl serviceUser;
+	
+	@Autowired
+	private MovementRepository movementRepository;
+	
+	@Autowired
+	private MovementServiceImpl serviceMovement;
 	
 	@Autowired
 	private SequenceGeneretorService service;
@@ -34,9 +43,13 @@ public class UserController {
 	
 	@GetMapping("/OneUser/{idUser}")
 	@ResponseBody
-	public User getOneUser(@PathVariable("idUser") String idUser) {
+	public String getOneUser(@PathVariable("idUser") String idUser) {
 		
-			return serviceUser.retrieveUser(idUser);
+			User user = serviceUser.retrieveUser(idUser);
+			 
+			 return "user name is :"+" " + user.getUserName() +"\n"+ "his phone number is :" +" "+ user.getPhoneNumberUser() 
+			 +"\n"+"he did "+ user.getUserMovement().size() + " " + "movements :" + "\n" + " " + user.getUserMovement().toString()
+			 +"\n"+"contient les produits suivants : " ;
 		
 	}
 	
@@ -57,6 +70,16 @@ public class UserController {
 	@DeleteMapping(value = "/deleteUser/{idUser}")
 	public void deleteMovement(@PathVariable("idUser") String idUser) {
 		serviceUser.deleteUser(idUser);
+	}
+	
+	@PutMapping(value = "/affectUserToMovement/{idUser}/{idMovement}")
+	public void affectUserToMovement(@PathVariable("idUser") String idUser , @PathVariable("idMovement") String idMovement) {
+		serviceUser.affecterUserToMovement(idUser, idMovement);
+	}
+	
+	@GetMapping(value = "/getMovementByUserName/{userName}")
+	public List<Movement> getMovementByUserName(@PathVariable("userName")String userName){
+		return serviceUser.getMovmentsByUserName(userName);
 	}
 	
 	
