@@ -58,7 +58,7 @@ public class UnderCategoryController {
 	
 	
 	@PutMapping("/affect-product-to-under-category/{Idp}/{Iduc}")
-	public void affecterProduitARayon(@PathVariable(value = "Idp") String idProduct,
+	public void affecterProduitAUC(@PathVariable(value = "Idp") String idProduct,
 			@PathVariable(value = "Iduc") String idUnderCategory) {
 		serviceUnderCategory.assignProductToUnderCategory(idUnderCategory, idProduct);
 		

@@ -11,6 +11,7 @@ public interface ProductService {
 	Product updateProduct(Product p);
 	Product retrieveProduct(String idProduct);
 	void deleteProduct(String idProduct);
+	Product GetByName(String titleProduct);
 	
 	
 
