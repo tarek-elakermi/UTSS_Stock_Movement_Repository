@@ -12,15 +12,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import tn.esprit.students.Models.Product;
+import tn.esprit.students.Models.ProductRepository;
 import tn.esprit.students.Services.ProductServiceImpl;
 
 @RestController
 public class ProductController {
 	
 	@Autowired
-	private ProductServiceImpl serviceProduct;
+	ProductServiceImpl serviceProduct;
+	
+	ProductRepository pr ;
 	
 	
 	@GetMapping("/AllProducts")
@@ -58,9 +60,12 @@ public class ProductController {
 	
 	
 	
+	@GetMapping("/retrieve-Product-By-Name/{Product-nameProduct}")
+	@ResponseBody
+	public Product retrieveDepByName(@PathVariable("Product-nameProduct") String nameproduct) {
+	return serviceProduct.GetByName(nameproduct);
 	
-	
-	
+	}
 	
 	
 	

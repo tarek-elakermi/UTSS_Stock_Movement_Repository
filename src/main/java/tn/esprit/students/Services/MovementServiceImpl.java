@@ -9,13 +9,19 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.students.Models.Movement;
 import tn.esprit.students.Models.MovementRepository;
+import tn.esprit.students.Models.Product;
+import tn.esprit.students.Models.ProductRepository;
+import tn.esprit.students.Models.Stock;
 
 @Service
 public class MovementServiceImpl implements MovementService {
 	
 	
 	@Autowired
-	private MovementRepository movementRepository;
+	MovementRepository movementRepository;
+	
+	@Autowired
+	ProductRepository pr ;
 	
 	private static final Logger L = LogManager.getLogger(MovementServiceImpl.class);
 
@@ -51,5 +57,7 @@ public class MovementServiceImpl implements MovementService {
 		movementRepository.deleteById(idMovement);
 		
 	}
+	
+	
 
 }

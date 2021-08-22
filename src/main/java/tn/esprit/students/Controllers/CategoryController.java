@@ -59,6 +59,12 @@ public class CategoryController {
 	
 	
 	
+	@PutMapping("affect-undercategory-to-category/{Iduc}/{Idc}")
+	public void affecterCattoUnderCat(@PathVariable(value = "Iduc") String Iduc,
+			@PathVariable(value = "Idc") String idCategory) {
+		serviceCategory.affectUnderCategoryToCategory(idCategory, Iduc);
+		
+	}
 	
 	
 	

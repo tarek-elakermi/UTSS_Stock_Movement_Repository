@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.esprit.students.Models.Category;
+
 import tn.esprit.students.Models.Movement;
 import tn.esprit.students.Services.MovementServiceImpl;
 
@@ -27,6 +27,7 @@ public class MovementController {
 		List<Movement> list = serviceMovement.retrieveAllMovement();
 		return list;
 	}
+	//gitbash
 	
 	@GetMapping("/OneMovement/{idMovement}")
 	@ResponseBody
